@@ -1,3 +1,4 @@
+import argparse
 import csv
 import os
 import time
@@ -12,7 +13,7 @@ HEADERS = {
     "Authorization": f"Bearer {HUBSPOT_API_KEY}",
     "Content-Type": "application/json",
 }
-CSV_FILE = "playmetrics_players_20260210_181136.csv"
+DEFAULT_CSV = "playmetrics_players.csv"
 
 # HubSpot rate limit: 100 requests per 10 seconds for private apps
 BATCH_SIZE = 100
@@ -161,13 +162,18 @@ def create_contacts_batch(contacts_list):
 
 
 def main():
+    parser = argparse.ArgumentParser(description="Upload parent contacts from PlayMetrics CSV to HubSpot")
+    parser.add_argument("--uploadcsv", default=DEFAULT_CSV, help=f"Path to the CSV file (default: {DEFAULT_CSV})")
+    args = parser.parse_args()
+
     if not HUBSPOT_API_KEY:
         print("ERROR: HUBSPOT_ACCESS_TOKEN not set in .env file")
         print("Create a .env file with: HUBSPOT_ACCESS_TOKEN=your-token-here")
         return
 
-    print(f"Reading CSV: {CSV_FILE}")
-    contacts = extract_parents_from_csv(CSV_FILE)
+    csv_file = args.uploadcsv
+    print(f"Reading CSV: {csv_file}")
+    contacts = extract_parents_from_csv(csv_file)
     print(f"Found {len(contacts)} unique parent contacts (by email) in CSV\n")
 
     if not contacts:

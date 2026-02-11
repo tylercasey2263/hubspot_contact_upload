@@ -50,11 +50,7 @@ HUBSPOT_ACCESS_TOKEN=pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 ### 4. Add your CSV
 
-Place your PlayMetrics player export CSV in the project directory. Update the `CSV_FILE` variable in `upload_parents.py` if the filename differs:
-
-```python
-CSV_FILE = "playmetrics_players_20260210_181136.csv"
-```
+Place your PlayMetrics player export CSV in the project directory. The default expected filename is `playmetrics_players.csv`.
 
 ## Usage
 
@@ -62,10 +58,16 @@ CSV_FILE = "playmetrics_players_20260210_181136.csv"
 python upload_parents.py
 ```
 
+To use a different CSV file:
+
+```bash
+python upload_parents.py --uploadcsv your_file.csv
+```
+
 ### Example Output
 
 ```
-Reading CSV: playmetrics_players_20260210_181136.csv
+Reading CSV: playmetrics_players.csv
 Found 1961 unique parent contacts (by email) in CSV
 
 Downloading existing contacts from HubSpot...
