@@ -31,7 +31,7 @@ Each parent with a valid email becomes a HubSpot contact with `firstname`, `last
 ### 1. Install dependencies
 
 ```bash
-pip install requests python-dotenv
+pip install -r requirements.txt
 ```
 
 ### 2. Create a HubSpot Private App
