@@ -42,11 +42,13 @@ pip install -r requirements.txt
 
 ### 3. Configure the environment
 
-Create a `.env` file in the project root:
+Copy the example environment file and add your access token:
 
+```bash
+cp .env.example .env
 ```
-HUBSPOT_ACCESS_TOKEN=pat-na1-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-```
+
+Then edit `.env` and replace the placeholder with your actual access token.
 
 ### 4. Add your CSV
 
