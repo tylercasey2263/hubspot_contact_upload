@@ -1,4 +1,5 @@
 .env
 *.csv
+*.xlsx
 .claude/
 __pycache__/
